@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>SVG Basics - Endava</title>
+</head>
+
+<body>
+  <!-- Si desean usar unidades relativas, lo pueden hacer a través de una clase o estilo CSS -->
+  <svg width="400" height="600" xmlns="http://www.w3.org/2000/svg" style="border: 5px solid gray">
+    <line x1="10" y1="10" x2="50" y2="50" stroke="DeepPink" stroke-width="2" />
+
+    <!-- stroke-dasharray permite multiples valores para lineas discontinuas personalizadas -->
+    <line x1="110" y1="10" x2="70" y2="50" stroke="DeepPink" stroke-width="2" stroke-dasharray="2" />
+
+    <!-- Los atributos que se coloquen en los grupos, afectan a todos los hijos -->
+    <g transform="translate(0,80)" fill="yellow">
+
+      <!-- Se pueden anidar grupos dentro de otros grupos -->
+      <g transform="translate(0,0)" stroke="orange" stroke-width="4" fill="limegreen">
+        <rect x="10" y="10" width="50" height="50" />
+
+        <!-- Recángulos con esquinas y bordes curvos, rx, ry -->
+        <rect x="70" y="10" width="50" height="50" fill="LightSeaGreen" rx="15" ry="15" />
+
+        <rect x="130" y="10" width="50" height="50" fill="LightSeaGreen" stroke="black" stroke-width="3" />
+
+        <!-- Para inclinar la figura hacia el otro lado, basta con cambiar el signo -->
+        <rect x="230" y="10" width="50" height="50" fill="LightSeaGreen" transform="skewX(-30)" />
+
+        <!-- Para rotar una figura, se deben colocar las coordenadas del punto de origen -->
+        <rect x="265" y="10" width="35" height="35" fill="LightSeaGreen" transform="translate(40, 0) rotate(45 265 10)" />
+      </g>
+
+      <!-- Los puntos de origen de los circulos y elipses es su mitad -->
+      <circle cx="35" cy="95" r="25" fill="Khaki" />
+      <ellipse cx="120" cy="95" rx="50" ry="25" fill="khaki" />
+
+      <!-- Para que la figura se cierre, polygon. No es necesario colocar al final la coordenada del punto de origen -->
+      <polygon transform="translate(10, 130)" points="0,50 50,50 25,10" fill="LimeGreen" />
+
+      <!-- Figuras transpartentes, fill="none" -->
+      <polygon transform="translate(70, 140)" points="0,0 50,0 25,40" stroke="LimeGreen" fill="none" stroke-width="3" />
+
+      <!-- Para que la figura NO se cierre, polyline -->
+      <polyline transform="translate(130, 130)" points="0,0 0,50 50,50 50,0" stroke="LimeGreen" fill="none"
+        stroke-width="3" />
+    </g>
+  </svg>
+</body>
+
+</html>
