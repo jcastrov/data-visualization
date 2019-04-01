@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Endava</title>
+</head>
+
+<body>
+  <svg id="mainSvg" xmlns="http://www.w3.org/2000/svg" width="300" height="300" style="border: 0.5px solid black">
+    <g id="gridGroup" stroke="#dddddd" stroke-width=".2"></g>
+  </svg>
+</body>
+
+<script>
+  // ===========================================================================
+  // Grid Definition
+  // ===========================================================================
+  const namespace = "http://www.w3.org/2000/svg";
+  const width = mainSvg.getAttribute("width");
+  const height = mainSvg.getAttribute("height");
+  const squareSize = 10;
+  const addLines = (dimension, dPath) => {
+    for (let i = squareSize; i < dimension; i += squareSize) {
+      const path = document.createElementNS(namespace, "path");
+      path.setAttributeNS(null, "d", dPath(i));
+      gridGroup.appendChild(path);
+    }
+  }
+  addLines(height, (i) => `M0 ${i} H${width}`);
+  addLines(width, (i) => `M${i} 0 V${height}`);
+</script>
+
+</html>
