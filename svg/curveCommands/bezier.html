@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>SVG Paths (Curve commands) - Endava</title>
+</head>
+
+<body>
+  <svg id="mainSvg" xmlns="http://www.w3.org/2000/svg" width="200" height="110" style="border: 0.5px solid black">
+    <style>
+      text {
+        font: 6px Arial, Helvetica, sans-serif;
+      }
+      rect {
+        fill-opacity: 0.03;
+        stroke-width: 0.3;
+        stroke-opacity: 0.5;
+        width: 86px;
+        height: 36px;
+      }
+      .quadratic-curves rect {
+        fill: cyan;
+        stroke: cyan;
+      }
+      .cubic-curves rect {
+        fill: yellow;
+        stroke: yellow;
+      }
+    </style>
+    <g id="gridGroup" stroke="#dddddd" stroke-width=".2"></g>
+
+    <g class="quadratic-curves" transform="translate(10,10)">
+      <text x="0" y="0">Quadratic Bezier curves</text>
+      <g class="relative" transform="translate(0,20)">
+        <rect x="-3" y="-13" />
+        <text x="0" y="-3">Absolute units</text>
+        <g class="metadata">
+          <g fill="limegreen">
+            <circle cx="0" cy="10" r="1.1" />
+            <circle cx="40" cy="10" r="1.1" />
+            <circle cx="80" cy="10" r="1.1" />
+          </g>
+          <g fill="red">
+            <circle cx="10" cy="20" r="1.1" />
+            <circle cx="30" cy="20" r="1.1" />
+            <circle cx="70" cy="0" r="1.1" />
+            <circle cx="50" cy="0" r="1.1" fill="blue" />
+          </g>
+          <path d="M 0 10 l 10 10 m 20 0 l 10 -10 m 40 0 l -10 -10" stroke="red" />
+          <path d="M 40 10 l 10 -10" stroke="blue" />
+        </g>
+
+        <path d="M0 10 C 10 20, 30 20, 40 10 S 70 0, 80 10" stroke="black" fill="transparent" />
+      </g>
+      <g class="absolute" transform="translate(0,70)">
+        <rect x="-3" y="-13" />
+        <text x="0" y="-3">Relative units</text>
+        <g class="metadata">
+          <g fill="limegreen">
+            <circle cx="0" cy="10" r="1.1" />
+            <circle cx="40" cy="10" r="1.1" />
+            <circle cx="80" cy="10" r="1.1" />
+          </g>
+          <g fill="red">
+            <circle cx="10" cy="20" r="1.1" />
+            <circle cx="30" cy="20" r="1.1" />
+            <circle cx="70" cy="0" r="1.1" />
+            <circle cx="50" cy="0" r="1.1" fill="blue" />
+          </g>
+          <path d="M 0 10 l 10 10 m 20 0 l 10 -10 m 40 0 l -10 -10" stroke="red" />
+          <path d="M 40 10 l 10 -10" stroke="blue" />
+        </g>
+         <path d="M0 10 c 10 10, 30 10, 40 0 s 30 -10, 40 0" stroke="black" fill="transparent" />
+      </g>
+    </g>
+
+    <g class="cubic-curves" transform="translate(110,10)">
+      <text x="0" y="0">Cubic Bezier curves</text>
+      <g class="relative" transform="translate(0,20)">
+        <rect x="-3" y="-13" />
+        <text x="0" y="-3">Absolute units</text>
+        <g class="metadata">
+          <g fill="limegreen">
+            <circle cx="0" cy="10" r="1.1" />
+            <circle cx="40" cy="10" r="1.1" />
+            <circle cx="80" cy="10" r="1.1" />
+          </g>
+          <g fill="red">
+            <circle cx="20" cy="20" r="1.1" />
+            <circle cx="60" cy="0" r="1.1" fill="blue" />
+          </g>
+          <path d="M 0 10 l 20 10 l 20 -10" stroke="red" fill="none" />
+          <path d="M 40 10 l 20 -10 l 20 10" stroke="blue" fill="none"/>
+        </g>
+
+        <path d="M0 10 Q 20 20, 40 10 T 80 10" stroke="black" fill="transparent" />
+      </g>
+      <g class="absolute" transform="translate(0,70)">
+        <rect x="-3" y="-13" />
+        <text x="0" y="-3">Relative units</text>
+        <g class="metadata">
+          <g fill="limegreen">
+            <circle cx="0" cy="10" r="1.1" />
+            <circle cx="40" cy="10" r="1.1" />
+            <circle cx="80" cy="10" r="1.1" />
+          </g>
+          <g fill="red">
+              <circle cx="20" cy="20" r="1.1" />
+              <circle cx="60" cy="0" r="1.1" fill="blue" />
+            </g>
+          <path d="M 0 10 l 20 10 l 20 -10" stroke="red" fill="none" />
+          <path d="M 40 10 l 20 -10 l 20 10" stroke="blue" fill="none"/>
+        </g>
+        <path d="M0 10 q 20 10, 40 0 t 40 0" stroke="black" fill="transparent" />
+      </g>
+    </g>
+  </svg>
+</body>
+
+<script>
+  // ===========================================================================
+  // Grid Definition
+  // ===========================================================================
+  const namespace = "http://www.w3.org/2000/svg";
+  const width = mainSvg.getAttribute("width");
+  const height = mainSvg.getAttribute("height");
+  const squareSize = 10;
+  const addLines = (dimension, dPath) => {
+    for (let i = squareSize; i < dimension; i += squareSize) {
+      const path = document.createElementNS(namespace, "path");
+      path.setAttributeNS(null, "d", dPath(i));
+      gridGroup.appendChild(path);
+    }
+  }
+  addLines(height, (i) => `M0 ${i} H${width}`);
+  addLines(width, (i) => `M${i} 0 V${height}`);
+</script>
+
+</html>
