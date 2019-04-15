@@ -18,20 +18,20 @@
         width: 86px;
         height: 36px;
       }
-      .quadratic-curves rect {
+      .cubic-curves rect {
         fill: cyan;
         stroke: cyan;
       }
-      .cubic-curves rect {
+      .quadratic-curves rect {
         fill: yellow;
         stroke: yellow;
       }
     </style>
     <g id="gridGroup" stroke="#dddddd" stroke-width=".2"></g>
 
-    <g class="quadratic-curves" transform="translate(10,10)">
-      <text x="0" y="0">Quadratic Bezier curves</text>
-      <g class="relative" transform="translate(0,20)">
+    <g class="cubic-curves" transform="translate(10,10)">
+      <text x="0" y="0">Cubic Bezier curves</text>
+      <g class="abs" transform="translate(0,20)">
         <rect x="-3" y="-13" />
         <text x="0" y="-3">Absolute units</text>
         <g class="metadata">
@@ -52,7 +52,7 @@
 
         <path d="M0 10 C 10 20, 30 20, 40 10 S 70 0, 80 10" stroke="black" fill="transparent" />
       </g>
-      <g class="absolute" transform="translate(0,70)">
+      <g class="relative" transform="translate(0,70)">
         <rect x="-3" y="-13" />
         <text x="0" y="-3">Relative units</text>
         <g class="metadata">
@@ -74,9 +74,9 @@
       </g>
     </g>
 
-    <g class="cubic-curves" transform="translate(110,10)">
-      <text x="0" y="0">Cubic Bezier curves</text>
-      <g class="relative" transform="translate(0,20)">
+    <g class="quadratic-curves" transform="translate(110,10)">
+      <text x="0" y="0">Quadratic Bezier curves</text>
+      <g class="abs" transform="translate(0,20)">
         <rect x="-3" y="-13" />
         <text x="0" y="-3">Absolute units</text>
         <g class="metadata">
@@ -95,7 +95,7 @@
 
         <path d="M0 10 Q 20 20, 40 10 T 80 10" stroke="black" fill="transparent" />
       </g>
-      <g class="absolute" transform="translate(0,70)">
+      <g class="relative" transform="translate(0,70)">
         <rect x="-3" y="-13" />
         <text x="0" y="-3">Relative units</text>
         <g class="metadata">
