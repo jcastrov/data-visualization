@@ -7,7 +7,33 @@
 
 <body>
   <svg id="mainSvg" xmlns="http://www.w3.org/2000/svg" width="300" height="300" style="border: 0.5px solid black">
+    <defs>
+      <marker id='head' orient="auto"
+        markerWidth='2' markerHeight='4'
+        refX='0.1' refY='2'>
+        <!-- triangle pointing right (+x) -->
+        <path d='M0,0 V4 L2,2 Z' fill="red"/>
+      </marker>
+      <marker id='head2' orient="auto-start-reverse"
+        markerWidth='20' markerHeight='4'
+        refX='0.1' refY='2'>
+        <!-- triangle pointing right (+x) -->
+        <path d='M0,0 V4 L20,2 ' fill="none" stroke="blue"/>
+      </marker>
+    </defs>
     <g id="gridGroup" stroke="#dddddd" stroke-width=".2"></g>
+    
+    <g transform="translate(30,30)">
+      <path
+      id='arrow-line'
+      marker-start="url(#head2)"
+      marker-end='url(#head)'
+      stroke-width='5'
+      fill='none' stroke='black'  
+      d='M0,0 C40,40 40,-40 80,0'
+      />
+    </g>
+    <path d='M0,0 V4 L2,2 Z' fill="red"/>
   </svg>
 </body>
 
